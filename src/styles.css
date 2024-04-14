@@ -1,0 +1,400 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  margin: 0;
+  padding: 0;
+  width: 65%;
+  background-color: #f5f5f5;
+}
+
+/* Style universal tags */
+h1 {
+  font-size: 4rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 3rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+/* Style the navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  column-gap: 3rem;
+  align-items: center;
+  min-height: 50px;
+  background-color: #fafafa;
+  height: 80px;
+  position: relative;
+  z-index: 0;
+}
+
+/* Navbar links */
+.navbar a {
+  color: black;
+  font-weight: 900;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 300ms ease;
+
+  &:hover {
+    font-size: 1.25rem;
+  }
+}
+
+/* Navbar progressbar */
+.progress_container {
+  width: 50%;
+  max-width: 600px;
+  margin: 0;
+}
+
+.progressbar {
+  counter-reset: step;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.progressbar li {
+  color: grey;
+  position: relative;
+  flex-basis: 0;
+  flex-grow: 1;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+.progressbar li:before {
+  content: counter(step);
+  counter-increment: step;
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  border: 2px solid #ddd;
+  display: block;
+  text-align: center;
+  margin: 0 auto 6px auto;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.progressbar li:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background-color: #ddd;
+  top: 12px; /* Adjust this to ensure the line is centered vertically with the numbers */
+  left: -50%;
+  z-index: -1;
+}
+
+.progressbar li:first-child:after {
+  content: none;
+}
+
+.progressbar li.checked {
+  color: green;
+}
+
+.progressbar li.checked:before {
+  border-color: green;
+}
+
+.progressbar li.progressed + li:after {
+  background-color: green;
+}
+
+/* Contents */
+.content {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
+#home {
+  & img {
+    width: 100%;
+    max-width: 50vw;
+  }
+
+  & .home_container {
+    display: flex;
+    padding: 4rem;
+    height: 92vh;
+  }
+
+  & .home_text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    width: 40%;
+
+    & p {
+      line-height: 1.5rem;
+    }
+  }
+
+  & .home_image {
+    display: flex;
+    align-items: center;
+    width: 60%;
+  }
+}
+
+#daylight,
+#privacy,
+#circulation {
+  & .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem;
+    height: 92vh;
+  }
+
+  & .images {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  & p {
+    width: 35%;
+    height: 2.5rem;
+    text-align: center;
+  }
+
+  & .image_main {
+    max-width: 65vw;
+  }
+}
+
+/* Your_own_space section with Sidebars */
+#your_own_space {
+  & .container {
+    display: flex;
+    height: 92vh;
+  }
+
+  & .sidebar {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 5rem;
+    width: 35%;
+    text-align: center;
+
+    & .sidebar_header {
+      margin-bottom: 3rem;
+      width: 100%;
+      max-width: 450px;
+      min-width: 300px;
+    }
+
+    & .sidebar_body {
+      border-radius: 2rem;
+      padding: 2rem;
+      width: 100%;
+      max-width: 450px;
+      min-width: 300px;
+    }
+
+    & .furniture_container {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 0;
+    }
+
+    & .furniture_item {
+      flex: 0 0 calc(50% - 10px);
+      margin: 5px;
+      background-color: #fafafa;
+      border: solid 1px #f5f5f5;
+      border-radius: 1rem;
+      cursor: pointer;
+
+      &:hover {
+        border: solid 1px grey;
+      }
+
+      & p {
+        margin: 0.5rem;
+      }
+
+      > img {
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        width: 100%;
+      }
+    }
+
+    & .input_container {
+      background-color: #f5f5f5;
+    }
+
+    & .optimization_preference {
+      border: solid 2px grey;
+      border-radius: 1rem;
+      margin-bottom: 1.5rem;
+      width: 100%;
+      height: 4rem;
+      line-height: 4rem;
+      max-width: 450px;
+      min-width: 300px;
+      color: #666;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+
+      &:hover {
+        border: solid 2px black;
+        color: black;
+        font-weight: 900;
+      }
+
+      &.selected {
+        border: solid 2px black;
+        color: black;
+        font-weight: 900;
+      }
+    }
+
+    & .slider_container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+
+      > p {
+        margin: 0;
+      }
+    }
+
+    & .slider {
+      width: 60%;
+    }
+  }
+}
+
+/* Quiz section */
+#quiz-1,
+#quiz-2,
+#quiz-3,
+#quiz-4 {
+  height: 92vh;
+  padding: 4rem;
+
+  & .quiz_container {
+    display: flex;
+    justify-content: start;
+
+    column-gap: 2rem;
+    margin-top: 5rem;
+
+    & .quiz_item {
+      border: solid 1px #f5f5f5;
+      background-color: #f5f5f5;
+      border-radius: 1rem;
+      cursor: pointer;
+
+      &:hover {
+        border: solid 1px grey;
+      }
+    }
+
+    & img {
+      width: 100%;
+      max-height: 50vh;
+    }
+  }
+}
+
+.arrow {
+  cursor: pointer;
+  opacity: 0.5;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.button_yellow {
+  width: 100%;
+  max-width: 450px;
+  min-width: 300px;
+  color: #555;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 1rem 2rem;
+  border: none;
+  background-color: #ffd129aa;
+  border-radius: 0.5rem;
+  cursor: pointer;
+
+  &:hover {
+    color: black;
+    background-color: #ffd129;
+  }
+}
+
+.button_blue {
+  width: 100%;
+  max-width: 450px;
+  min-width: 300px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 1rem 2rem;
+  border: none;
+  background-color: #036bfccc;
+  border-radius: 0.5rem;
+  cursor: pointer;
+
+  &:hover {
+    color: white;
+    background-color: #036bfc;
+  }
+}
+
+/* Adjustments for smaller screens */
+@media screen and (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+  }
+  .navbar a {
+    padding: 10px;
+  }
+}
